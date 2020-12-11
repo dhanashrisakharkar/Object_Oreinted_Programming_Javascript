@@ -1,0 +1,16 @@
+{
+    "Stocks": [
+        {
+            "ShareName": "Wipro",
+            "NoOfShares": 30,
+            "SharePrice": 20000,
+            "TotalSharePrice": 600000
+        },
+        {
+            "ShareName": "LUPIN",
+            "NoOfShares": 50,
+            "SharePrice": 100000,
+            "TotalSharePrice": 5000000
+        }
+    ]
+}
