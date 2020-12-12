@@ -30,40 +30,32 @@ class Stock {
         })
 
     }
-    addManual() {
-        const newObj = {
-            "ShareName": "Wipro",
-            "NoOfShares": 30,
-            "SharePrice": 20000,
-            "TotalSharePrice": 600000
-        }
-        const jsonString = JSON.stringify(newObj);
-        console.log(jsonString);
+    writeData(name, numberOfShares, price, output) {
 
-        fs.writeFileSync('./StockAccountNew.json', JSON.stringify(newObj), Error => {
-            if (Error) {
-                console.log(Error);
-            } else {
-                console.log("success!!")
-            }
-        })
-    }
-    changeData(name, numberOfShares, price, output) {
         const newObj1 = {
             ShareName: name,
             NoOfShares: numberOfShares,
             SharePrice: price,
             TotalSharePrice: output
         }
-        console.log(newObj1);
-        fs.writeFileSync('./StockAccountNew.json', JSON.stringify(newObj1), Error => {
-            if (Error) {
-                console.log(Error);
+
+        this.take.Stocks[this.take.Stocks.length] = newObj1;
+        console.log(this.take)
+        let result = fs.writeFile('./StockAccountManagement.json', JSON.stringify(this.take), (err, data) => {
+            if (err) {
+                console.log(err);
             } else {
                 console.log("success!!")
             }
         })
+        return result;
+
     }
+
+    printFinalData() {
+        console.log(this.take);
+    }
+
 }
 
 module.exports = new Stock();
