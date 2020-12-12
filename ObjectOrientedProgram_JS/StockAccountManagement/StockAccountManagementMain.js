@@ -6,18 +6,22 @@
 ************************************************************************************************/
 
 const fs = require('fs')
-const fileData = require('./StockAccountBussinessManagement')
+let fileData = require('./StockAccountBussinessLogic')
 const readline = require('readline-sync');
+const { changeData } = require('./StockAccountBussinessLogic');
 
-function stockHandle(){
+function stockHandle() {
+    //let map = {};
     fileData.dataFile();
     fileData.Calculate();
     fileData.addManual();
+
     let nameOfStock = readline.question("Enter the name of stocks :-");
     let numOfShares = readline.question("Enter the no of stock  :-");
     let numofPrice = readline.question("enter the no of price :-");
     let output = numOfShares * numofPrice;
-    fileData.changeData(nameOfStock, numOfShares, numofPrice, output)
+    let getData = fileData.changeData(nameOfStock, numOfShares, numofPrice, output)
+    fileData.writeData(getData);
 }
 
 stockHandle();
